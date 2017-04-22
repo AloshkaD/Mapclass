@@ -1,4 +1,4 @@
-//=================================================================================
+""//=================================================================================
 // Name        : 1d_bayesian filter
 // Version     : 1.0.0
 // Copyright   : MBRDNA, Udacity
@@ -12,7 +12,7 @@
 #include "measurement_package.h"
 #include "map.h"
 #include "help_functions.h"
-
+#include "bayesianFilter.h"
 using namespace std;
 
 int main() {
@@ -64,7 +64,7 @@ int main() {
 	////////////
 	//Results://	
 	////////////
-	
+	/*
 	std::cout <<"..................................................."<< std::endl;
 	std::cout <<"..................................................."<< std::endl;
 	std::cout <<"............----> Coding quiz 1  <----............."<< std::endl;
@@ -104,10 +104,24 @@ int main() {
 				for(int j=0;j<measurement_pack_list[i].observation_s_.distance_f.size();j++	){
 					std::cout<< "	Distance to a landmark: "
 							 <<  measurement_pack_list[i].observation_s_.distance_f[j]
+				
 							 <<  " m" <<std::endl;
 				}
 			}
 			std::cout << "..................................................."<< std::endl;
 		}
+
+		*/
+	bayesianFilter localization_1d_bayesian;
+	size_t T = measurement_pack_list.size();
+	for (size_t t = 0; t< T; ++t){
+        localization_1d_bayesian.process_measurement(measurement_pack_list[t], map_1d, helper);
+
+
+	} 	
+
+	sprintf(in_file_name_gt,"data/example%s/gt_example%s.txt",example_string.c_str(), example_string.c_str)	
+	
+	helper.compare_data(in_file_name_gt, localization_1d_bayesian.bel_x);
 	return 0;
 }
