@@ -14,7 +14,7 @@
 #include "measurement_package.h"
 #include "map.h"
 #include "help_functions.h"
-
+using namespace std;
 class bayesianFilter {
 public:
 	//constructor:
@@ -38,7 +38,9 @@ private:
 	////////////////
     //Add members!//
     ////////////////
-    bool
+    bool is_initialized_;
+    float control_std;
+    vector<float> bel_x_init;
 
 };
 
